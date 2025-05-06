@@ -1,6 +1,36 @@
-@dev.lippok.api.kryptos_HostAddress = http://localhost:5149
+### Sign a string
+POST http://localhost:5149/CryptoSign/Sign
+Content-Type: application/json
 
-GET {{dev.lippok.api.kryptos_HostAddress}}/weatherforecast/
-Accept: application/json
+"Test string"
 
-###
+### Get the public key
+GET http://localhost:5149/CryptoSign/PublicKey
+
+
+### Verify a valid signature
+POST http://localhost:5149/CryptoSign/Verify
+Content-Type: application/json
+
+{
+  "Input": "Test string",
+  "Signature": "PASTE_VALID_SIGNATURE_HERE"
+}
+
+### Verify an invalid signature
+POST http://localhost:5149/CryptoSign/Verify
+Content-Type: application/json
+
+{
+  "Input": "Test string",
+  "Signature": "INVALID_SIGNATURE"
+}
+
+### Verify with null or empty input
+POST http://localhost:5149/CryptoSign/Verify
+Content-Type: application/json
+
+{
+  "Input": null,
+  "Signature": null
+}
