@@ -15,6 +15,11 @@ public class CryptoSignController : ControllerBase
         _logger = logger;
     }
 
+    /// <summary>
+    /// Signs the provided input string using RSA.
+    /// </summary>
+    /// <param name="input">The input string to sign.</param>
+    /// <returns>A base64-encoded signature of the input string.</returns>
     [HttpPost("Sign")]
     public IActionResult SignString([FromBody] string input)
     {
@@ -42,6 +47,10 @@ public class CryptoSignController : ControllerBase
         }
     }
     
+    /// <summary>
+    /// Retrieves the RSA public key.
+    /// </summary>
+    /// <returns>A base64-encoded RSA public key.</returns>
     [HttpGet("PublicKey")]
     public IActionResult GetPublicKey()
     {
@@ -62,6 +71,12 @@ public class CryptoSignController : ControllerBase
         }
     }
     
+    /// <summary>
+    /// Verifies the provided signature against the input string.
+    /// </summary>
+    /// <param name="request">The verification request containing the input string and signature.</param>
+    /// <returns>A boolean indicating whether the signature is valid.</returns>
+
     [HttpPost("Verify")]
     public IActionResult VerifySignature([FromBody] VerifyRequest request)
     {
