@@ -14,7 +14,7 @@ builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new()
     {
-        Title = builder.Environment.ApplicationName,
+        Title = "Kryptos API",
         Version = "v1",
         Description = "API for cryptographic operations",
     });
